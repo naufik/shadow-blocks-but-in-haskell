@@ -8,4 +8,12 @@ To be honest, I do not know if I can maintain this as I seem to have reached a d
 
 ## Progress
 
-- **10/11**: The player can now properly move, although mostly everything is still hardcoded in `Main.hs`. May want to create better abstraction for this purpose but I am still trying to figure out how.
+- **10 November**: The player can now properly move, although mostly everything is still hardcoded in `Main.hs`. May want to create better abstraction for this purpose but I am still trying to figure out how.
+
+## Issues
+
+So as you may wonder, the following are the unresolved issues I am having with
+the project.
+
+- This game is based on the graphics library `gloss`. Gloss is great as a graphics library and it goes the extra mile for allowing "games" to be played by having an update loop and a keyboard event handler. However I seem to not be able to find an "on button hold" event.
+- With `Haskell`'s type system, we have inheritance but we do not have heterogeneous lists. Making it somewhat difficult to have a "World" containing different types of entity. Right now my workaround to this is the Prop system (somewhat like a make-believe/make-do entity component system).
