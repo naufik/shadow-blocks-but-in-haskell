@@ -9,7 +9,7 @@ import Data.List
 
 main :: IO ()
 main = do
-  play (InWindow "Hello" (800, 600) (100,100)) white 60
+  play (InWindow "Shadow Blocks Reloaded" (800, 600) (100,100)) white 60
     defaultWorld renderWorld handleEvent doNothing
 
 renderWorld :: World -> Picture
