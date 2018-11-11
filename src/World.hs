@@ -11,8 +11,8 @@ module World (World, defaultWorld, getByName) where
   updateWorld :: World -> World
   updateWorld world = map (run defaultBehaviors) world
   
-  runBehavior :: Behavior -> (World -> GameObject -> GameObject)
-  runBehavior (_, target, f) = 
+  -- runBehavior :: Behavior -> (World -> GameObject -> GameObject)
+  -- runBehavior (_, target, f) = 
 
   defaultWorld :: World
   defaultWorld = defaultFloors ++ [defaultPlayer] 
