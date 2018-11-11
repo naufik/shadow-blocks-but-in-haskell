@@ -5,18 +5,27 @@ module World (World, defaultWorld, getByName) where
   import System.IO.Unsafe
 
   type World = [GameObject]
+  type Behavior = (String, String, World -> GameObject -> GameObject)
+
+
+  updateWorld :: World -> World
+  updateWorld world = map (run defaultBehaviors) world
+  
+  runBehavior :: Behavior -> (World -> GameObject -> GameObject)
+  runBehavior (_, target, f) = 
 
   defaultWorld :: World
   defaultWorld = defaultFloors ++ [defaultPlayer] 
 
-  defaultPlayer :: GameObject
-  defaultPlayer = setProps [("x", floatProp 0), ("y", floatProp 0), ("moveable", 
-    boolProp True)] (newObj "Player" (pngPlayer) [])
+  defaultBehaviors :: [Behavior]
 
+  defaultPlayer :: GameObject
+  defaultPlayer = setProps [("x", FloatProp 0), ("y", FloatProp 0), ("moveable", 
+    BoolProp True)] (GameObject "Player" (pngPlayer) [])
 
   defaultFloors :: [GameObject]
-  defaultFloors = [newObj "Wall" (pngFloor) [("x", floatProp x),
-    ("y", floatProp y)] | x <- tiles, y <- tiles]
+  defaultFloors = [GameObject "Wall" (pngFloor) [("x", FloatProp x),
+    ("y", FloatProp y)] | x <- tiles, y <- tiles]
     where tiles = [-224,-192..224]
   
   pngPlayer :: Maybe Picture

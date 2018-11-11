@@ -1,7 +1,6 @@
 -- 
-module GameObject (GameObject, Prop, getInt, getBool, getFloat, getString,
-  render, newObj, getId, intProp, stringProp, boolProp, floatProp,
-  setProps, setProp) where
+module GameObject (GameObject(GameObject), Prop(..), getInt, getBool, getFloat,
+  getString, render, setProps, setProp) where
   import Graphics.Gloss
   import Data.Maybe
 
@@ -56,20 +55,5 @@ module GameObject (GameObject, Prop, getInt, getBool, getFloat, getString,
   update :: Monad m => m GameObject -> m GameObject
   update = id
 
-  newObj :: String -> Maybe Picture -> [(String, Prop)] -> GameObject
-  newObj x y z = GameObject x y z
-
   getId :: GameObject -> String
   getId (GameObject id _ _) = id
-
-  intProp :: Int -> Prop
-  intProp x = IntProp x
-
-  floatProp :: Float -> Prop
-  floatProp x = FloatProp x
-
-  stringProp :: String -> Prop
-  stringProp x = StrProp x
-
-  boolProp :: Bool -> Prop
-  boolProp x = BoolProp x
